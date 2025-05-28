@@ -1,128 +1,31 @@
-#-------------------------
-# Operating Specific Junk Files
-#-------------------------
+# Ignora pastas geradas automaticamente
+/vendor/
+node_modules/
 
-# OS X
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# OS X Thumbnails
-._*
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# Linux
-*~
-
-# KDE directory preferences
-.directory
-
-# Linux trash folder which might appear on any partition or disk
-.Trash-*
-
-#-------------------------
-# Environment Files
-#-------------------------
-# These should never be under version control,
-# as it poses a security risk.
+# Arquivo de ambiente (segurança)
 .env
-.vagrant
-Vagrantfile
 
-#-------------------------
-# Temporary Files
-#-------------------------
+# Writable - ignora arquivos gerados
 writable/cache/*
-!writable/cache/index.html
+!writable/cache/.gitignore
 
 writable/logs/*
-!writable/logs/index.html
+!writable/logs/.gitignore
 
 writable/session/*
-!writable/session/index.html
-
-writable/uploads/*
-!writable/uploads/index.html
+!writable/session/.gitignore
 
 writable/debugbar/*
-!writable/debugbar/.gitkeep
+!writable/debugbar/.gitignore
 
-php_errors.log
+# Arquivos compactados e temporários
+*.zip
+*.log
+*.bak
+*.tmp
 
-#-------------------------
-# User Guide Temp Files
-#-------------------------
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
-
-#-------------------------
-# Test Files
-#-------------------------
-tests/coverage*
-
-# Don't save phpunit under version control.
-phpunit
-
-#-------------------------
-# Composer
-#-------------------------
-vendor/
-
-#-------------------------
-# IDE / Development Files
-#-------------------------
-
-# Modules Testing
-_modules/*
-
-# phpenv local config
-.php-version
-
-# Jetbrains editors (PHPStorm, etc)
-.idea/
-*.iml
-
-# Netbeans
-nbproject/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
-.nb-gradle/
-
-# Sublime Text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-.phpintel
-/api/
-
-# Visual Studio Code
+# Arquivos do sistema/IDE
 .vscode/
-
-/results/
-/phpunit*.xml
-/.phpunit.*.cache
-
+.idea/
+.DS_Store
+Thumbs.db
