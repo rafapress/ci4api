@@ -29,3 +29,5 @@ writable/debugbar/*
 .idea/
 .DS_Store
 Thumbs.db
+
+build/
