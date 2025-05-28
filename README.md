@@ -63,7 +63,6 @@ VALUES
 | PUT    | `/api/users/{id}` | Atualizar usuário pelo ID |
 | DELETE | `/api/users/{id}` | Excluir usuário pelo ID   |
 
-
 ## Token de Autenticação
 
 Use o token fixo: d3f81a9e5e4a7c0f3a2d9b7c1c30f8e2 para autenticar as requisições no header Authorization: Bearer <token>.
