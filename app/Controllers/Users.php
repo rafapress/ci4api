@@ -12,7 +12,7 @@ class Users extends ResourceController {
 
   // Listar todos usuários - GET /api/users
   public function index() {
-    $users = $this->model->findAll();
+    $users = $this->model->orderBy('id', 'ASC')->findAll();
     return $this->respond($users);
   }
 
@@ -44,7 +44,12 @@ class Users extends ResourceController {
 
     $data['id'] = $this->model->getInsertID();
 
-    return $this->respondCreated($data, 'Usuário criado com sucesso');
+    $response = [
+      'message' => 'Usuário criado com sucesso',
+      'data'    => $data
+    ];
+
+    return $this->respondCreated($response);
 
   }
 
