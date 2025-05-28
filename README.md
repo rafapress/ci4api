@@ -1,68 +1,73 @@
-# CodeIgniter 4 Application Starter
+# API Users - Projeto com CodeIgniter 4
 
-## What is CodeIgniter?
+Este repositório contém uma API RESTful simples para gerenciamento de usuários, construída com CodeIgniter 4, além de um front-end básico para testes das operações CRUD (Create, Read, Update, Delete).
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Banco de Dados
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+O banco de dados utilizado é MySQL.
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Criar o Banco de Dados e a tabela users
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+Execute o script "database.sql" para criar o banco `ci4apidb` e a tabela `users` com os campos necessários.
 
-## Installation & updates
+```sql
+-- Criar banco de dados
+CREATE DATABASE IF NOT EXISTS ci4apidb
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+USE ci4apidb;
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+-- Criar tabela users
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(150) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  phone VARCHAR(50),
+  cpf VARCHAR(20),
+  rg VARCHAR(20),
+  address VARCHAR(255),
+  number VARCHAR(20),
+  district VARCHAR(100),
+  city VARCHAR(100),
+  fu CHAR(2),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-## Setup
+-- Popular dados de exemplo
+-- Para inserir alguns usuários de teste, execute o seguinte:
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+INSERT INTO users (name, email, phone, cpf, rg, address, number, district, city, fu)
+VALUES
+  ('Juliano Alves', 'juliano.alves@email.com', '(19) 97888.3499', '123.456.789-00', 'MG-12.345.678', 'Rua das Flores', '123', 'Centro', 'Campinas', 'SP'),
+  ('Maria Silva', 'maria.silva@email.com', '(11) 91234.5678', '987.654.321-00', 'SP-98.765.432', 'Av. Paulista', '1000', 'Bela Vista', 'São Paulo', 'SP'),
+  ('Carlos Pereira', 'carlos.pereira@email.com', '(21) 99876.5432', '111.222.333-44', 'RJ-11.222.333', 'Rua do Mercado', '45', 'Centro', 'Rio de Janeiro', 'RJ');
 
-## Important Change with index.php
+```
+## Como usar
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+1. Configure seu ambiente local com PHP, MySQL e CodeIgniter 4.
+2. Importe o banco de dados com o script acima.
+3. Configure a conexão com o banco no arquivo .env ou app/Config/Database.php do CodeIgniter, apontando para ci4apidb.
+4. Execute a API.
+5. Abra o arquivo index.html no navegador para testar as operações CRUD (botões de Cadastrar, Listar, Alterar e Excluir).
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Endpoints da API
 
-**Please** read the user guide for a better explanation of how CI4 works!
+| Método | Endpoint          | Descrição                 |
+| ------ | ----------------- | ------------------------- |
+| POST   | `/api/users`      | Cadastrar novo usuário    |
+| GET    | `/api/users`      | Listar todos os usuários  |
+| GET    | `/api/users/{id}` | Listar usuário pelo ID    |
+| PUT    | `/api/users/{id}` | Atualizar usuário pelo ID |
+| DELETE | `/api/users/{id}` | Excluir usuário pelo ID   |
 
-## Repository Management
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## Token de Autenticação
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Use o token fixo: d3f81a9e5e4a7c0f3a2d9b7c1c30f8e2 para autenticar as requisições no header Authorization: Bearer <token>.
 
-## Server Requirements
+## Suporte
 
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> The end of life date for PHP 7.4 was November 28, 2022.
-> The end of life date for PHP 8.0 was November 26, 2023.
-> If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> The end of life date for PHP 8.1 will be November 25, 2024.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Qualquer dúvida ou sugestão, abra uma issue ou entre em contato: rafapress@yahoo.com
