@@ -1,33 +1,54 @@
-# Ignora pastas geradas automaticamente
-/vendor/
-node_modules/
-
-# Arquivo de ambiente (segurança)
-.env
-
-# Writable - ignora arquivos gerados
-writable/cache/*
-!writable/cache/.gitignore
-
-writable/logs/*
-!writable/logs/.gitignore
-
-writable/session/*
-!writable/session/.gitignore
-
-writable/debugbar/*
-!writable/debugbar/.gitignore
-
-# Arquivos compactados e temporários
-*.zip
-*.log
-*.bak
-*.tmp
-
-# Arquivos do sistema/IDE
-.vscode/
-.idea/
+# -------------------
+# Sistema Operacional
+# -------------------
 .DS_Store
 Thumbs.db
 
+# -------------------
+# Arquivos de Ambiente
+# -------------------
+.env
+.vagrant
+Vagrantfile
+
+# -------------------
+# Pastas Temporárias do CI4
+# -------------------
+writable/cache/
+writable/logs/
+writable/session/
+writable/uploads/
+writable/debugbar/
+
+# -------------------
+# Logs e erros
+# -------------------
+php_errors.log
+
+# -------------------
+# Dependências do Composer
+# -------------------
+vendor/
+
+# -------------------
+# Pastas de Build e Compilados
+# -------------------
 build/
+
+# -------------------
+# IDEs e Editores
+# -------------------
+.idea/
+.vscode/
+
+# -------------------
+# Arquivos de Teste
+# -------------------
+phpunit.xml
+.phpunit.result.cache
+
+# -------------------
+# Arquivos temporários e backups
+# -------------------
+*.log
+*~
