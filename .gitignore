@@ -1,54 +1,39 @@
-# -------------------
-# Sistema Operacional
-# -------------------
+# Ignorar arquivos temporários e do sistema
+*.log
+*.bak
+*.tmp
+*.swp
 .DS_Store
 Thumbs.db
 
-# -------------------
-# Arquivos de Ambiente
-# -------------------
-.env
-.vagrant
-Vagrantfile
-
-# -------------------
-# Pastas Temporárias do CI4
-# -------------------
-writable/cache/
-writable/logs/
-writable/session/
-writable/uploads/
-writable/debugbar/
-
-# -------------------
-# Logs e erros
-# -------------------
-php_errors.log
-
-# -------------------
-# Dependências do Composer
-# -------------------
+# Ignorar diretórios do sistema e builds
+build/
+builds/
 vendor/
 
-# -------------------
-# Pastas de Build e Compilados
-# -------------------
-build/
+# Ignorar cache do CodeIgniter
+writable/cache/*
+!writable/cache/index.html
 
-# -------------------
-# IDEs e Editores
-# -------------------
-.idea/
-.vscode/
+# Ignorar testes de código
+phpunit.xml.dist
 
-# -------------------
-# Arquivos de Teste
-# -------------------
-phpunit.xml
-.phpunit.result.cache
+# Ignorar arquivos não desejados no repositório
+.gitignore
+LICENSE
+build.php
+composer.lock
+preload.php
 
-# -------------------
-# Arquivos temporários e backups
-# -------------------
-*.log
-*~
+# Ignorar diretórios e arquivos ocultos (exceto .htaccess e .gitkeep)
+.*
+!.htaccess
+!.gitkeep
+
+# Manter database.sql
+!database.sql
+
+# Manter pasta com testes front-end
+!front end (tests)/
+
+# Manter o arquivo .env (não ignorar)
